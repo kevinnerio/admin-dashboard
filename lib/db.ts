@@ -70,3 +70,55 @@ export async function getProducts(
 export async function deleteProductById(id: number) {
   await db.delete(products).where(eq(products.id, id));
 }
+
+export const customers = pgTable('customers', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(),
+  status: pgEnum('status', ['active', 'inactive', 'archived'])('status').notNull(),
+  createdAt: timestamp('created_at').notNull(),
+  email: text('email').notNull()
+});
+
+export type SelectCustomers = typeof customers.$inferSelect;
+
+export const insertCustomersSchema = createInsertSchema(customers);
+
+export async function deleteCustomerById(id: number) {
+  await db.delete(customers).where(eq(customers.id, id));
+}
+
+export async function getCustomers(
+  search: string,
+  offset: number
+): Promise<{
+  customers: SelectCustomers[];
+  newOffset: number | null;
+  totalCustomers: number;
+}> {
+  // Always search the full table, not per page
+  if (search) {
+    return {
+      customers: await db
+        .select()
+        .from(customers)
+        .where(ilike(customers.name, `%${search}%`))
+        .limit(1000),
+      newOffset: null,
+      totalCustomers: 0
+    };
+  }
+
+  if (offset === null) {
+    return { customers: [], newOffset: null, totalCustomers: 0 };
+  }
+
+  let totalCustomers = await db.select({ count: count() }).from(customers);
+  let moreCustomers = await db.select().from(customers).limit(5).offset(offset);
+  let newOffset = moreCustomers.length >= 5 ? offset + 5 : null;
+
+  return {
+    customers: moreCustomers,
+    newOffset,
+    totalCustomers: totalCustomers[0].count
+  };
+}

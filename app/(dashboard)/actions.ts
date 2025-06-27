@@ -8,3 +8,9 @@ export async function deleteProduct(formData: FormData) {
   // await deleteProductById(id);
   // revalidatePath('/');
 }
+
+export async function deleteCustomers(formData: FormData) {
+  //let id = Number(formData.get('id'));
+  //await deleteProductById(id);
+  //revalidatePath('/customers');
+}

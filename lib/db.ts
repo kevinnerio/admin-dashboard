@@ -71,7 +71,10 @@ export async function deleteProductById(id: number) {
   await db.delete(products).where(eq(products.id, id));
 }
 
-export const customers = pgTable('customers', {
+//Clients
+
+// Clients table definition
+export const clients = pgTable('customers', {
   id: serial('id').primaryKey(),
   name: text('name').notNull(),
   status: pgEnum('status', ['active', 'inactive', 'archived'])('status').notNull(),
@@ -79,46 +82,48 @@ export const customers = pgTable('customers', {
   email: text('email').notNull()
 });
 
-export type SelectCustomers = typeof customers.$inferSelect;
+// Type for selecting customers
+export type SelectClients = typeof clients.$inferSelect;
 
-export const insertCustomersSchema = createInsertSchema(customers);
+export const insertCustomersSchema = createInsertSchema(clients);
 
-export async function deleteCustomerById(id: number) {
-  await db.delete(customers).where(eq(customers.id, id));
+export async function deleteClientById(id: number) {
+  await db.delete(clients).where(eq(clients.id, id));
 }
 
-export async function getCustomers(
+// Function to get customers with search and pagination
+export async function getClients(
   search: string,
   offset: number
 ): Promise<{
-  customers: SelectCustomers[];
-  newOffset: number | null;
-  totalCustomers: number;
+  clients: SelectClients[];
+  clientsOffset: number | null;
+  totalClients: number;
 }> {
   // Always search the full table, not per page
   if (search) {
     return {
-      customers: await db
+      clients: await db
         .select()
-        .from(customers)
-        .where(ilike(customers.name, `%${search}%`))
+        .from(clients)
+        .where(ilike(clients.name, `%${search}%`))
         .limit(1000),
-      newOffset: null,
-      totalCustomers: 0
+      clientsOffset: null,
+      totalClients: 0
     };
   }
 
   if (offset === null) {
-    return { customers: [], newOffset: null, totalCustomers: 0 };
+    return { clients: [], clientsOffset: null, totalClients: 0 };
   }
 
-  let totalCustomers = await db.select({ count: count() }).from(customers);
-  let moreCustomers = await db.select().from(customers).limit(5).offset(offset);
-  let newOffset = moreCustomers.length >= 5 ? offset + 5 : null;
+  let totalClients = await db.select({ count: count() }).from(clients);
+  let moreClients = await db.select().from(clients).limit(5).offset(offset);
+  let clientsOffset = moreClients.length >= 5 ? offset + 5 : null;
 
   return {
-    customers: moreCustomers,
-    newOffset,
-    totalCustomers: totalCustomers[0].count
+    clients: moreClients,
+    clientsOffset,
+    totalClients: totalClients[0].count
   };
 }

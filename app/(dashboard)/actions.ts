@@ -9,7 +9,7 @@ export async function deleteProduct(formData: FormData) {
   // revalidatePath('/');
 }
 
-export async function deleteCustomers(formData: FormData) {
+export async function deleteClients(formData: FormData) {
   //let id = Number(formData.get('id'));
   //await deleteProductById(id);
   //revalidatePath('/customers');

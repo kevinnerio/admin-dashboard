@@ -9,24 +9,24 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { SelectCustomers } from '@/lib/db';
-import { deleteCustomers } from '../actions';
+import { SelectClients } from '@/lib/db';
+import { deleteClients } from '../actions';
 
-export function Customers({ customers }: { customers: SelectCustomers }) {
+export function Clients({ clients }: { clients: SelectClients }) {
   return (
     <TableRow>
-      <TableCell className="font-medium">{customers.name}</TableCell>
+      <TableCell className="font-medium">{clients.name}</TableCell>
       <TableCell>
         <Badge variant="outline" className="capitalize">
-          {customers.status}
+          {clients.status}
         </Badge>
       </TableCell>
       <TableCell className="hidden md:table-cell">
-        {customers.createdAt.toLocaleDateString("en-US")}
+        {clients.createdAt.toLocaleDateString("en-US")}
       </TableCell>
         <TableCell>
           <Badge variant="outline" className="capitalize">
-            {customers.email}
+            {clients.email}
           </Badge>
         </TableCell>
         <DropdownMenu>
@@ -36,7 +36,7 @@ export function Customers({ customers }: { customers: SelectCustomers }) {
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>Edit</DropdownMenuItem>
             <DropdownMenuItem>
-              <form action={deleteCustomers}>
+              <form action={deleteClients}>
                 <button type="submit">Delete</button>
               </form>
             </DropdownMenuItem>

@@ -46,6 +46,13 @@ export async function GET() {
       createdAt: new Date(),
       email: 'alex@email.com'
     },
+    {
+      id: 7,
+      name: 'Jordan Rickman',
+      status: 'active',
+      createdAt: new Date(),
+      email: 'jrickman@email.com'
+    }
   ]);
 
   return Response.json({

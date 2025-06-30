@@ -78,11 +78,11 @@ function DesktopNav() {
           <ShoppingCart className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/" label="Products">
+        <NavItem href="/" label="Listings">
           <Package className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="/customers" label="Customers">
+        <NavItem href="/clients" label="Clients">
           <Users2 className="h-5 w-5" />
         </NavItem>
 

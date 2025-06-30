@@ -44,9 +44,9 @@ export function ProductsTable({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Products</CardTitle>
+        <CardTitle>Listings</CardTitle>
         <CardDescription>
-          Manages your products and view their sales performance.
+          Manages your listings and their status.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -56,7 +56,7 @@ export function ProductsTable({
               <TableHead className="hidden w-[100px] sm:table-cell">
                 <span className="sr-only">Image</span>
               </TableHead>
-              <TableHead>Name</TableHead>
+              <TableHead>Address</TableHead>
               <TableHead>Status</TableHead>
               <TableHead className="hidden md:table-cell">Price</TableHead>
               <TableHead className="hidden md:table-cell">
@@ -102,6 +102,12 @@ export function ProductsTable({
               type="submit"
               disabled={offset + productsPerPage > totalProducts}
             >
+            {console.log(
+                  'Offset + customersPerPage :',
+                  offset + productsPerPage,
+                  'Total Customers:',
+                  totalProducts
+                )}
               Next
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>

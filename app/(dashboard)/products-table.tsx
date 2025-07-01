@@ -102,12 +102,6 @@ export function ProductsTable({
               type="submit"
               disabled={offset + productsPerPage > totalProducts}
             >
-            {console.log(
-                  'Offset + customersPerPage :',
-                  offset + productsPerPage,
-                  'Total Customers:',
-                  totalProducts
-                )}
               Next
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>

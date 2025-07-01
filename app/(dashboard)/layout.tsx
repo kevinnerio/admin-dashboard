@@ -2,7 +2,7 @@ import Link from 'next/link';
 import {
   Home,
   LineChart,
-  Package,
+  House,
   Package2,
   PanelLeft,
   Settings,
@@ -70,16 +70,8 @@ function DesktopNav() {
           <span className="sr-only">Acme Inc</span>
         </Link>
 
-        <NavItem href="#" label="Dashboard">
-          <Home className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="#" label="Orders">
-          <ShoppingCart className="h-5 w-5" />
-        </NavItem>
-
         <NavItem href="/" label="Listings">
-          <Package className="h-5 w-5" />
+          <House className="h-5 w-5" />
         </NavItem>
 
         <NavItem href="/clients" label="Clients">
@@ -130,13 +122,6 @@ function MobileNav() {
             href="#"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <Home className="h-5 w-5" />
-            Dashboard
-          </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
             <ShoppingCart className="h-5 w-5" />
             Orders
           </Link>
@@ -144,8 +129,8 @@ function MobileNav() {
             href="#"
             className="flex items-center gap-4 px-2.5 text-foreground"
           >
-            <Package className="h-5 w-5" />
-            Products
+            <House className="h-5 w-5" />
+            Listings
           </Link>
           <Link
             href="#"
@@ -179,12 +164,12 @@ function DashboardBreadcrumb() {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="#">Products</Link>
+            <Link href="#">Listings</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbPage>All Products</BreadcrumbPage>
+          <BreadcrumbPage>All Listings</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>

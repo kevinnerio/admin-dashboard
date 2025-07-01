@@ -25,14 +25,14 @@ export function Product({ product }: { product: SelectProduct }) {
           width="64"
         />
       </TableCell>
-      <TableCell className="font-medium">{product.name}</TableCell>
+      <TableCell className="font-medium">{product.address}</TableCell>
       <TableCell>
         <Badge variant="outline" className="capitalize">
           {product.status}
         </Badge>
       </TableCell>
+      <TableCell className="font-medium">{product.notes}</TableCell>
       <TableCell className="hidden md:table-cell">{`$${product.price}`}</TableCell>
-      <TableCell className="hidden md:table-cell">{product.stock}</TableCell>
       <TableCell className="hidden md:table-cell">
         {product.availableAt.toLocaleDateString("en-US")}
       </TableCell>

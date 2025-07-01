@@ -58,10 +58,8 @@ export function ProductsTable({
               </TableHead>
               <TableHead>Address</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Notes</TableHead>
               <TableHead className="hidden md:table-cell">Price</TableHead>
-              <TableHead className="hidden md:table-cell">
-                Total Sales
-              </TableHead>
               <TableHead className="hidden md:table-cell">Created at</TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>

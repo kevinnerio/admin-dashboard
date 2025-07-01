@@ -1,9 +1,9 @@
- import { db, customers } from 'lib/db';
+ import { db, clients } from 'lib/db';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-  await db.insert(customers).values([
+  await db.insert(clients).values([
     {
       id: 1,
       name: 'Sam Altman',

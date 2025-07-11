@@ -3,6 +3,7 @@ import { File, PlusCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ClientTable } from './clients-table';
 import { getClients } from '@/lib/db';
+import { insertCustomers } from '../actions'; 
 
 export default async function ClientsPage(
   props: {
@@ -35,12 +36,17 @@ export default async function ClientsPage(
               Export
             </span>
           </Button>
-          <Button size="sm" className="h-8 gap-1">
-            <PlusCircle className="h-3.5 w-3.5" />
-            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-              Add Client
-            </span>
-          </Button>
+          <form action={insertCustomers}>
+            <Button size="sm" className="h-8 gap-1">
+              <PlusCircle className="h-3.5 w-3.5" />
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Add Client
+              </span>
+            </Button>
+            <input type="hidden" name="email" value="test@example.com" />
+             <input type="hidden" name="name" value="Test Client" />
+             <input type="hidden" name="status" value="active" />
+          </form>
         </div>
       </div>
       <TabsContent value="all">

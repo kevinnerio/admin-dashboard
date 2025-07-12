@@ -56,9 +56,12 @@ export function ClientTable({
               <TableHead className="hidden w-[100px] sm:table-cell">
                 Name
               </TableHead>
+              <TableHead className="hidden md:table-cell">Email</TableHead>
+              <TableHead className="hidden md:table-cell">Phone</TableHead>
+              <TableHead className="hidden md:table-cell">Notes</TableHead>
+              <TableHead className="hidden md:table-cell">Address</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Created At</TableHead>
-              <TableHead className="hidden md:table-cell">email</TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
               </TableHead>

@@ -79,7 +79,10 @@ export const clients = pgTable('customers', {
   name: text('name').notNull(),
   status: pgEnum('status', ['active', 'inactive', 'archived'])('status').notNull(),
   createdAt: timestamp('created_at').notNull(),
-  email: text('email').notNull()
+  email: text('email').notNull(), 
+  primary_phone_number: text('primary_phone_number').default(''),
+  notes: text('notes').default(''),
+  current_address: text('current_address').default('')
 });
 
 // Type for selecting customers

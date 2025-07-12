@@ -16,6 +16,10 @@ export function Clients({ clients }: { clients: SelectClients }) {
   return (
     <TableRow>
       <TableCell className="font-medium">{clients.name}</TableCell>
+      <TableCell className="font-medium">{clients.email}</TableCell>
+      <TableCell className="font-medium">{clients.primary_phone_number}</TableCell>
+      <TableCell className="font-medium">{clients.notes}</TableCell>
+      <TableCell className="font-medium">{clients.current_address}</TableCell>
       <TableCell>
         <Badge variant="outline" className="capitalize">
           {clients.status}
@@ -24,11 +28,6 @@ export function Clients({ clients }: { clients: SelectClients }) {
       <TableCell className="hidden md:table-cell">
         {clients.createdAt.toLocaleDateString("en-US")}
       </TableCell>
-        <TableCell>
-          <Badge variant="outline" className="capitalize">
-            {clients.email}
-          </Badge>
-        </TableCell>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
           </DropdownMenuTrigger>

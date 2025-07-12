@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ClientTable } from './clients-table';
 import { getClients } from '@/lib/db';
 import { insertCustomers } from '../actions'; 
+import { AddClientModal } from './add-client-modal';
 
 export default async function ClientsPage(
   props: {
@@ -21,14 +22,14 @@ export default async function ClientsPage(
   return (
     <Tabs defaultValue="all">
       <div className="flex items-center">
-        <TabsList>
+        {/* <TabsList>
           <TabsTrigger value="all">All</TabsTrigger>
           <TabsTrigger value="active">Active</TabsTrigger>
           <TabsTrigger value="draft">Draft</TabsTrigger>
           <TabsTrigger value="archived" className="hidden sm:flex">
             Archived
           </TabsTrigger>
-        </TabsList>
+        </TabsList> */}
         <div className="ml-auto flex items-center gap-2">
           <Button size="sm" variant="outline" className="h-8 gap-1">
             <File className="h-3.5 w-3.5" />
@@ -36,17 +37,7 @@ export default async function ClientsPage(
               Export
             </span>
           </Button>
-          <form action={insertCustomers}>
-            <Button size="sm" className="h-8 gap-1">
-              <PlusCircle className="h-3.5 w-3.5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                Add Client
-              </span>
-            </Button>
-            <input type="hidden" name="email" value="test@example.com" />
-             <input type="hidden" name="name" value="Test Client" />
-             <input type="hidden" name="status" value="active" />
-          </form>
+          <AddClientModal />
         </div>
       </div>
       <TabsContent value="all">

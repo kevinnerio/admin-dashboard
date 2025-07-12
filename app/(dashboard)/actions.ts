@@ -18,7 +18,7 @@ export async function deleteClients(formData: FormData) {
 export async function insertCustomers(formData: FormData) {
   let data = Object.fromEntries(formData);
 
-  data.createdAt = new Date();
+  data.createdAt = new Date();   
 
   let parsedData = insertCustomersSchema.safeParse(data);
   console.log('Parsed Data:', parsedData);

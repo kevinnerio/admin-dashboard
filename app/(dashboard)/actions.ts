@@ -18,10 +18,11 @@ export async function deleteClients(formData: FormData) {
 export async function insertCustomers(formData: FormData) {
   let data = Object.fromEntries(formData);
 
-  data.createdAt = new Date();   
+  (data as any).createdAt = new Date(); //resolves minor issue with date, weakens type safety but we control it and only add it from the server using the correct type. 
 
   let parsedData = insertCustomersSchema.safeParse(data);
   console.log('Parsed Data:', parsedData);
+
   if (!parsedData.success) {
     console.error('Validation failed:', parsedData.error);
     return;

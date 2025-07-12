@@ -15,11 +15,11 @@ import { deleteClients } from '../actions';
 export function Clients({ clients }: { clients: SelectClients }) {
   return (
     <TableRow>
-      <TableCell className="font-medium">{clients.name}</TableCell>
-      <TableCell className="font-medium">{clients.email}</TableCell>
-      <TableCell className="font-medium">{clients.primary_phone_number}</TableCell>
-      <TableCell className="font-medium">{clients.notes}</TableCell>
-      <TableCell className="font-medium">{clients.current_address}</TableCell>
+      <TableCell className="font-small">{clients.name}</TableCell>
+      <TableCell className="font-small">{clients.email}</TableCell>
+      <TableCell className="font-small">{clients.primary_phone_number}</TableCell>
+      <TableCell className="font-small">{clients.notes}</TableCell>
+      <TableCell className="font-small">{clients.current_address}</TableCell>
       <TableCell>
         <Badge variant="outline" className="capitalize">
           {clients.status}
